@@ -1,3 +1,5 @@
+// modified by Abhishek Mishra 
+// can print 612 colors now
 package main
 
 import (
@@ -16,14 +18,15 @@ func setConsoleColors() error {
 }
 
 func Color(colorcode int) string {
-	setConsoleColors() // init of terminal
+	setConsoleColors()
 	code := strconv.Itoa(colorcode)
-	color := "\u001b[38;5;" + code + "m" // acii code used by terminals to print colors
+	color := "\u001b[38;5;" + code + "m" 
 	return fmt.Sprintf(color)
-
 }
 
 func main() {
-	fmt.Printf("%vThis is color\n", Color(140)) // color code 140
-	fmt.Print("\u001b[0m") // This is to reset the terminal color 
+	for colorCode := 1; colorCode <= 612; colorCode++ {
+		fmt.Printf("%vColor %d\n", Color(colorCode), colorCode)
+		fmt.Print("\u001b[0m") 
+	}
 }
